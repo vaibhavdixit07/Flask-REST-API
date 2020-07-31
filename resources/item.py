@@ -53,10 +53,10 @@ class Item(Resource):
             item.price = data['price'] # This is updating in query
             item.store_id = data['store_id']
 
-        try:
-            item.save_to_db() # It can perform both update and insert
-        except:
-            return {'message': 'An error occured while inserting/updating item'}, 500 #Internal server error as issue with some server
+
+        item.save_to_db() # It can perform both update and insert
+        # except:
+        #     return {'message': 'An error occured while inserting/updating item'}, 500 #Internal server error as issue with some server
         return item.json()
 
 

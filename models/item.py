@@ -22,16 +22,6 @@ class ItemModel(db.Model):
     def find_by_name(cls, name):
         return cls.query.filter_by(name=name).first() # select * from items where name= name limit 1
 
-    # @classmethod
-    # def find_all(cls):
-    #     items = []
-    #     item = cls.query.with_entities(cls.name, cls.price).all()
-    #     for row in item:
-    #         cls.name = row[0]
-    #         cls.price = row[1]
-    #         items.append(cls.json(cls))
-    #     return items
-
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
