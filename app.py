@@ -21,6 +21,7 @@ app.config['JWT_AUTH_URL_RULE'] = '/login'
 app.config['JWT_EXPIRATION_DELTA'] = datetime.timedelta(seconds=1800)
 # config JWT auth key name to be 'email' instead of default 'username'
 # app.config['JWT_AUTH_USERNAME_KEY'] = 'email'
+db.init_app(app)
 @app.before_first_request
 def create_tables():
     db.create_all()
@@ -34,5 +35,4 @@ api.add_resource(StoreList, '/stores')
 api.add_resource(UserRegister, '/signup')
 
 if __name__ == '__main__':
-    db.init_app(app)
     app.run(debug=True)
